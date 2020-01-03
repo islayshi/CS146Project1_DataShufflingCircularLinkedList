@@ -1,0 +1,63 @@
+package cs14619.Shi.project1;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Random;
+
+public class DataShuffling {
+	ArrayList<String> text;
+
+	public DataShuffling() {
+		ArrayList<String> text = new ArrayList<String>();
+	}
+
+	public void shuffle() throws IOException {
+		// Declare Random class
+		Random r = new Random();
+		try {
+			// Take ErdosCA.txt
+			FileReader inputFile = new FileReader("data\\ErdosCA.txt");
+
+			// Store into array
+			BufferedReader readErdos = new BufferedReader(inputFile);
+			String line = null;
+
+			while ((line = readErdos.readLine()) != null) {
+				text.add(line);
+			}
+
+			// Close bufferedreader
+			readErdos.close();
+		} catch (FileNotFoundException e) {
+			;
+		}
+
+		// Algorithm from the requirements
+		int n = text.size();
+		for (int i = n - 1; i > 0; i--) {
+			// Pick a random index from 0 to i
+			int j = r.nextInt(i + 1);
+
+			// Swap arr[i] with the element at random index
+			String temp = text.get(i);
+			// arr[i] = arr[j];
+			text.set(i, text.get(j));
+			// arr[j] = temp;
+			text.set(j, temp);
+		}
+
+		// Write into files
+		FileWriter writer = new FileWriter("data\\ShiIslaShuffled.txt");
+		for (String str : text) {
+			writer.write(str + System.lineSeparator());
+		}
+		writer.close();
+
+		// close inputFile
+		inputFile.close();
+	}
+}

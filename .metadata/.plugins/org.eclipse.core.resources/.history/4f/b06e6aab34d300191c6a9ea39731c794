@@ -1,0 +1,44 @@
+package cs14619.Shi.project1;
+
+import static org.junit.Assert.*;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+import org.junit.*;
+
+public class DataShufflingTest {
+
+	@Test
+	public void FileCompare() throws IOException {
+		String expectedLine = "";
+		try {
+			
+			System.out.println("In");
+			FileReader outFile = new FileReader("src/Target1.txt");
+			FileReader inFile = new FileReader("src/Target1.txt");	
+			
+			System.out.print("Here");
+			
+			
+			BufferedReader out1 = new BufferedReader(outFile);
+			BufferedReader in1 = new BufferedReader(inFile);
+
+			while ((expectedLine = in1.readLine()) != null) {
+				String actualLine = out1.readLine();
+				assertEquals(expectedLine, actualLine);
+			}
+			out1.close();
+			in1.close();
+			
+			outFile.close();
+			inFile.close();
+		} catch (FileNotFoundException e) {
+			//???
+			System.out.println("File Not Found");
+		}
+	}
+
+}

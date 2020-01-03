@@ -1,0 +1,14 @@
+package cs14619.Shi.project1;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+
+public class DataShuffling {
+	String[] elements;
+	
+	public void shuffle() throws FileNotFoundException {
+		FileReader inputFile = new FileReader("data\\Target1.txt");
+		
+		inputFile.close();
+	}
+}

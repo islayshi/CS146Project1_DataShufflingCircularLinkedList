@@ -1,0 +1,34 @@
+import static org.junit.Assert.*;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+
+import org.junit.Test;
+
+public class DataShufflingTest {
+	String expectedLine;
+	/*
+	 * @Test public void test() { fail("Not yet implemented"); }
+	 */
+
+	@Test	
+	//compare two output files
+	
+	public void compareTextOutput() {
+		//Full file path: C:\Users\genericStudent\eclipse-workspace\CS146Project1\Project1\
+		
+		//C:\Users\genericStudent\eclipse-workspace\CS146Project1
+		BufferedReader Out = new BufferedReader (new FileReader("C:\\Users\\genericStudent\\Desktop\\Target"));
+		
+		
+		
+		BufferedReader In = new BufferedReader (new FileReader("C:\\Users\\genericStudent\\eclipse-workspace\\CS146Project1\\Project1\\src\\Target1.txt"));
+		
+		
+		while ((expectedLine = In.readLine()) != null) {
+		 String actualLine = Out.readLine();
+		 assertEquals (expectedLine, actualLine);
+		 }
+	}
+
+}

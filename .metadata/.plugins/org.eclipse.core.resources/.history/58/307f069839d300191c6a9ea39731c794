@@ -1,0 +1,39 @@
+package cs14619.Shi.project1;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+
+public class DataShuffling {
+	ArrayList<String> text;
+	
+	public DataShuffling() {
+		ArrayList<String> text = new ArrayList<String>()
+	}
+	
+	public void shuffle() throws IOException {
+		FileReader inputFile = new FileReader("data\\ErdosCA.txt");
+		
+		//Store into array 
+		
+		BufferedReader readErdos = new BufferedReader(inputFile);
+		String line = null;
+		
+		while ((line = readErdos.readLine()) != null) {
+			text.add(line);
+		}
+		
+		//Close bufferedreader
+		readErdos.close();
+		
+		
+		//Algorithm from the requirements
+		
+		
+		
+		
+		inputFile.close();
+	}
+}

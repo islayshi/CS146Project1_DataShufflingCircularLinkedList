@@ -1,0 +1,75 @@
+package cs14619.Shi.project1;
+import static org.junit.Assert.*;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+import org.junit.*;
+
+public class DataShufflingTest {
+
+	
+	@Test
+	public void FileCompare() throws IOException {
+		
+		//FileReader inputFile = new FileReader("Target1.txt");
+		/*
+		String expectedLine = "";
+		BufferedReader Out = null;
+		try {
+			Out = new BufferedReader(new FileReader("Target1.txt"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		BufferedReader In = null;
+		try {
+			In = new BufferedReader (new FileReader ("src\\Target2.txt"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		try {
+			expectedLine = In.readLine();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		while ((expectedLine != null)) {
+		 String actualLine = null;
+		try {
+			actualLine = Out.readLine();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 assertEquals (expectedLine, actualLine);
+		 }
+		*/
+		
+		String expectedLine = "";
+		try {
+
+			BufferedReader out1 =new BufferedReader (new FileReader ("Target1.txt"));
+			BufferedReader in1 =new BufferedReader (new FileReader ("Target1.txt"));
+
+			while ((expectedLine = in1.readLine()) != null) {
+			 String actualLine = out1.readLine();
+			 assertEquals (expectedLine, actualLine);
+			 }
+			out1.close();
+			in1.close();
+		}catch(FileNotFoundException e) {
+			;
+		}
+	}
+	
+	
+
+}
